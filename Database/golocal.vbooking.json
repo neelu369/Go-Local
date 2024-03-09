@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "655cd4583122c7c4650eef9d"
+  },
+  "vehicleno": "KA05ML6405",
+  "mileage": "70kmph",
+  "booked": true,
+  "emailid": "v@cccccc"
+},
+{
+  "_id": {
+    "$oid": "655cd4ca3122c7c4650eef9e"
+  },
+  "vehicleno": "KA05MA6215",
+  "mileage": "60kmph",
+  "booked": false,
+  "emailid": ""
+},
+{
+  "_id": {
+    "$oid": "655cd4ef3122c7c4650eef9f"
+  },
+  "vehicleno": "KA02BA6215",
+  "mileage": "72kmph",
+  "booked": false,
+  "emailid": "a@a"
+},
+{
+  "_id": {
+    "$oid": "655cd5033122c7c4650eefa0"
+  },
+  "vehicleno": "KA07CD6232",
+  "mileage": "65kmph",
+  "booked": false,
+  "emailid": "a@a"
+}]
