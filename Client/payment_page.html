@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class HomePage extends React.Component{ 
+    constructor()
+    {
+        super();
+    }
+
+
+    render()
+    {
+        return(
+            <div>
+                <div>
+                <ul>
+                    <li><a href = "home_page.html">Home</a></li>
+                    <li><a href = "about_us.html">About Us</a></li>
+                    <li><a href = "feedback.html">Feedback</a></li>
+                </ul>
+                </div>
+
+                <div id = "stylepayment">
+                <table>
+                    <tr>
+                        <th><img src = "gpay.png" width = "100px" height = "100px"/></th>
+                        <th><h1>GPay</h1></th>
+                    </tr>
+
+                    <tr>
+                        <th><img src = "paytm.png" width = "100px" height = "100px"/></th>
+                        <th><h1>PayTM</h1></th>
+                    </tr>
+
+                    <tr>
+                        <th><img src = "phonepe.png" width = "100px" height = "100px"/></th>
+                        <th><h1>PhonePe</h1></th>
+                    </tr>
+                </table>
+                </div>
+
+
+            </div>
+            
+        )
+    
+    }
+}
+ReactDOM.render(<HomePage/>, document.getElementById("root"));
+</script>
+</body>
+</html>  

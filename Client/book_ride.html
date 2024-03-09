@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class BookRide extends React.Component{ 
+    constructor()
+    {
+        super();
+        //this.vehicle = {"vehicleno" : "", "mileage" : ""};      //GET THIS FROM DATABASE FOR NOW WE JUST PUT
+        this.rate = 2.5;
+        this.currentuser = localStorage.getItem("currentuser")
+        this.state={
+            currentemailid : localStorage.getItem("currentemailid"),
+            curvno:"",
+            curmileage:"",
+        }
+        this.booknow = this.booknow.bind(this)
+    }
+
+    componentDidMount()
+   {    
+        const {currentemailid} = this.state;
+        fetch("http://localhost:5000/getvno", {
+        method:"POST",
+        crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            currentemailid,
+        })
+        }).then((res)=>res.json())
+        .then((data)=>{
+            if (data.status == "ok") {
+                console.log("User vehicle got !", data.msg.vehicleno);
+                this.setState({curvno: data.msg.vehicleno, curmileage:data.msg.mileage})
+            }
+            else {
+                alert(data.msg)
+            }
+        })
+   }
+
+    booknow()
+    {
+        const {currentemailid,curvno} = this.state;
+        fetch("http://localhost:5000/booknow", {
+        method:"POST",
+        crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            currentemailid,
+            curvno,
+        })
+        }).then((res)=>res.json())
+        .then((data)=>{
+            console.log(data)
+            if (data.status == "ok") {
+                console.log("Booking Done");
+                localStorage.setItem("curvno",curvno)
+                window.location.href = './ride_confirmed.html'
+            }
+        })
+    }
+
+    
+    render()
+    {
+        return(
+            <div>
+                <div>
+                    <ul>
+                        <li><a href = "home_page.html">Home</a></li>
+                        <li><a href = "about_us.html">About Us</a></li>
+                        <li><a href = "feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style = {{textAlign : "center"}}>Welcome {this.currentuser}</h3>
+                </div>
+
+                <div id = "booknow">
+                <h1>BOOK YOUR RIDE</h1>
+                <h4>{this.state.curvno}</h4>
+                <h4>{this.state.curmileage}</h4>
+                <h4>{this.rate} rupees per min</h4>
+                <div>
+                    <button onClick = {this.booknow}>BOOK NOW</button> 
+                </div>
+                </div>
+            </div>
+        )
+    
+    }
+
+    
+}
+ReactDOM.render(<BookRide/>, document.getElementById("root"))
+</script>
+</body>
+</html> 

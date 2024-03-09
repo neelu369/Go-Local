@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+
+
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class AboutUs extends React.Component{ 
+    constructor()
+    {
+        super();
+    }
+
+
+    render()
+    {
+        return(
+            <div>
+                <div>
+                    <ul>
+                        <li><a href = "home_page.html">Home</a></li>
+                        <li><a href = "about_us.html">About Us</a></li>
+                        <li><a href = "feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+            <h1 id = "about">About Us</h1>
+            <p id = "para1">Our team consists of Nilesh,Nagrathna, Netravathi of F section. </p>
+            </div>
+        )
+    
+    }
+}
+ReactDOM.render(<AboutUs/>, document.getElementById("root"))
+</script>
+</body>
+</html> 

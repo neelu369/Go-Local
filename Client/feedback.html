@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class Feedback extends React.Component{ 
+    constructor()
+    {
+        super();
+    }
+
+
+    render()
+    {
+        return(
+            <div>
+                <div>
+                    <ul>
+                        <li><a href = "home_page.html">Home</a></li>
+                        <li><a href = "about_us.html">About Us</a></li>
+                        <li><a href = "feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+            <div>
+            <h2 id = "feedback_title">Feedback Form</h2>
+                <br></br>                
+                <form id = "query">
+                    <div>
+                        <label for="query">Enter Your Query:</label>
+                        <textarea id="query" rows="5" cols="40"></textarea>
+                    </div>
+                    <br></br>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                    <br></br>
+                    <div>
+                        <button type="button">Chat with Us</button>
+                    </div>
+                    <br></br>
+                </form>
+            </div>
+            </div>
+        )
+    
+    }
+}
+ReactDOM.render(<Feedback/>, document.getElementById("root"))
+</script>
+</body>
+</html> 

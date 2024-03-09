@@ -1,0 +1,159 @@
+#style1{
+    display : flex;
+    padding: 0px;
+    justify-content : center;
+}
+
+ul li{
+    display : inline-block;
+}
+
+ul{
+    list-style : none;
+    text-align : center;
+    font-size : 30px;
+    margin : 0px;
+    position : sticky;
+    top : 0px;
+    padding-top : 20px;
+    padding-bottom : 20px;
+    background-color : #340969;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+
+}
+
+a{
+    color : white;
+    border-radius : 2px;
+    transition : 0.5s ease;
+    text-decoration : none;
+    padding : 100px
+
+}
+
+ul li a:hover{  
+    color : #340969 ;
+}
+
+body{
+    margin : 0px;
+    font-family : cursive;
+
+}
+
+#title{
+    background-color : #340969;
+    font: bolder 12vw 'Alfa Slab One';
+    color : white;
+    text-align : center;
+    letter-spacing : 5px;
+    font-size : 40px;
+    padding : 20px;
+    margin : 0px;
+    animation: neon2 1.5s ease-in-out infinite alternate;
+
+}
+
+#main-content
+{
+    display:flex;
+}
+
+
+#login
+{ 
+    text-align : center;
+}
+
+#sign-up
+{
+    text-align : center;
+}
+
+#passw{
+    font-size : 30px;
+}
+
+
+
+#booknow
+{
+    text-align : center;
+}
+
+#ride-c
+{
+    text-align : center;
+}
+
+#footer{
+    display : flex;
+    text-align : center;
+    background-color: #340969;
+    color : white;
+    height : 150px;
+    margin-top : 100px;
+
+}
+
+#feedback_title
+{
+    text-align : center;
+}
+
+#text
+{
+    color:              rgb(255, 255, 255);
+    background:         skyblue;
+    mix-blend-mode:     multiply;
+    font:               bolder 12vw 'Alfa Slab One';
+    text-align:         center;
+    margin:             0;
+    font-size:         60px;
+}
+
+
+#query 
+{
+    text-align : center;
+}
+
+#stylepayment
+{
+    font-size : 15px;
+}
+
+@keyframes neon1 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
+        0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+        0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
+    }
+  }
+
+
+@keyframes neon2 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #1180ff,
+        0 0 70px #1180ff, 0 0 80px #1180ff, 0 0 100px #1180ff, 0 0 150px #1180ff;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #1180ff,
+        0 0 35px #1180ff, 0 0 40px #1180ff, 0 0 50px #1180ff, 0 0 75px #1180ff;
+    }
+  }
+
+
+@keyframes neon3 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #25ff11,
+        0 0 70px #25ff11, 0 0 80px #25ff11, 0 0 100px #25ff11, 0 0 150px #25ff11;
+    }
+    to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #25ff11,
+        0 0 35px #25ff11, 0 0 40px #25ff11, 0 0 50px #25ff11, 0 0 75px #25ff11;
+    }
+  }

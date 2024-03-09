@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class HomePage extends React.Component{ 
+    constructor()
+    {
+        super();
+    }
+
+
+    render()    
+    {
+        return(     
+            <div>
+                <div>
+                    <ul>
+                        <li><a href = "home_page.html">Home</a></li>
+                        <li><a href = "about_us.html">About Us</a></li>
+                        <li><a href = "feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+            <hr size ="5"></hr>
+            <h1 id = "title"> GOLOCAL </h1> 
+            <div id="main-content">
+                <img src = "golocal.jpeg" width = "200" height = "200"></img>
+                <p id = "content">GoLocal is a ride booking app which allows you to book scooters and ride them as per your convenience</p>
+            </div>
+
+            <br></br>
+            <br></br>
+
+            <div id = "sign-up">
+                <a href = "sign_up_page.html">
+                    <button  style = {{fontSize : "40px"}}>Sign Up</button>
+                </a>
+                <a href = "signin.html">
+                    <button  style = {{fontSize : "40px"}}>Sign In</button>
+                </a>
+            </div>
+            
+
+            <div id="footer">
+                <p style = {{fontSize : "35px", marginLeft : "80px", marginTop : '60px', marginBottom : "20px"}} id = "content1"> © all rights reserved.</p>
+                <div style = {{marginLeft : "100px", padding : "0px", marginTop : "60px", marginBottom : "20px"}}>
+                    <a href="https://www.facebook.com/">
+                    <img src="fb_1.png" width = "50px" height = "50px"/>
+                    </a>
+                
+                
+                    <a href="https://twitter.com">  
+                    <img src="twitter_1.png" width = "50px" height = "50px"/>
+                    </a>
+                
+                    
+                
+                    <a href="https://www.instagram.com/">
+                    <img src="instagram_1.png" width = "50px" height = "50px"/>
+                    </a>
+                
+                
+                    <a href="https://www.youtube.com">
+                    <img src="yt_1.png" width = "50px" height = "50px"/>
+                    </a>                   
+                </div>
+            </div>
+            </div>
+        )
+    
+    }
+}
+ReactDOM.render(<HomePage/>, document.getElementById("root"));
+</script>
+</body>
+</html> 

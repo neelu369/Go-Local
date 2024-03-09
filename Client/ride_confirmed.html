@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel = "stylesheet" href = "style_1.css"></link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class RideConfirmed extends React.Component{ 
+    constructor(){
+        super();
+        this.date = new Date();
+        this.month = this.date.getMonth() + 1;
+        this.year = this.date.getFullYear();
+        this.day = this.date.getDate();
+        this.myref = React.createRef();
+        this.startTime = Date.now();
+        this.endride = this.endride.bind(this)
+        
+    }
+
+    
+    
+
+    componentDidMount()
+    { 
+        setInterval(this.manage_timer, 1000);
+       
+    }
+
+    endride()
+    {
+        let curvno = localStorage.getItem("curvno")
+        console.log("in endride ride conf " + curvno)
+        fetch("http://localhost:5000/endride", {
+        method:"POST",
+        crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            curvno,
+        })
+        }).then((res)=>res.json())
+        .then((data)=>{
+            console.log(data)
+            if (data.status == "ok") {
+                let price=2.5;
+                console.log("Elapsed time is "+this.myref.current.value)
+                let hr = parseInt(this.myref.current.value[0]+this.myref.current.value[1])
+                let min = parseInt(this.myref.current.value[3]+this.myref.current.value[4])
+                let time = hr*60+min
+                console.log("elapsed time = " + time + " mins")
+                alert("You need to pay "+price*time);
+                alert("Thank you for the business, redirecting you to home page");
+                window.location.href = './home_page.html'
+            }
+            else {
+                alert(data.msg)
+            }
+        })
+    }
+
+    render()
+    {
+        return(
+            <div id = "ride-c">
+                <div>
+                    <ul>
+                        <li><a href = "home_page.html">Home</a></li>
+                        <li><a href = "about_us.html">About Us</a></li>
+                        <li><a href = "feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h1>Your ride has been confirmed for {localStorage.getItem('curvno')}. Enjoy!!</h1>
+                    <br></br>
+                </div>
+                
+                <div>
+                    <h2>Booking occured at {this.day}/{this.month}/{this.year}</h2>
+                </div>
+                
+                <div>
+                    <label for = "display">Elapsed Time : </label><span id="display" ref={this.myref}></span>
+                </div>  
+                
+                <div id = "sign-up">
+                    <button style = {{fontSize : "30px"}} onClick = {this.endride}>End Ride</button>
+                </div>
+
+            </div>
+        )
+    
+    }
+    manage_timer = ()=>{
+        var elapsedTime = Date.now() - this.startTime;
+        var diffInHrs = elapsedTime / 3600000;
+        var hh = Math.floor(diffInHrs);
+
+        var diffInMin = (diffInHrs - hh) * 60;
+        var mm = Math.floor(diffInMin);
+
+        var diffInSec = (diffInMin - mm) * 60;
+        var ss = Math.floor(diffInSec);
+
+        var diffInMs = (diffInSec - ss) * 1000;
+        var ms = Math.floor(diffInMs);
+
+        var formattedMM = mm.toString().padStart(2, "0");
+        var formattedSS = ss.toString().padStart(2, "0");
+        var formattedHH = hh.toString().padStart(2, "0");
+
+        var tmp = `${formattedHH}:${formattedMM}:${formattedSS}`
+        this.myref.current.value = tmp;
+       
+        document.getElementById("display").innerHTML = tmp;
+    }
+    
+}
+ReactDOM.render(<RideConfirmed/>, document.getElementById("root"))
+</script>
+</body>
+</html> 

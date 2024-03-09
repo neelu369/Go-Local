@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<title>React</title>
+<script crossdomain
+src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js">
+</script>
+<link rel = "stylesheet" href = "style_1.css">
+</link>
+</head>
+<body>
+<div id="root" style = "border : 1px solid gray; width : 1534px;height : 735px; background-color: skyblue;"></div>
+
+<script type = "text/babel">
+class SignUp extends React.Component{ 
+    constructor(){
+        super();
+        this.state={
+        name:"",
+        email:"",
+        phoneno:"",
+        password:"",
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+   }
+  
+
+   handleSubmit(e) {
+        e.preventDefault();
+        const {name, emailid, phoneno, password} = this.state;
+        console.log(name, emailid, phoneno, password)
+        fetch("http://localhost:5000/register", {
+        method:"POST",
+        crossDomain:true,
+        headers:{
+            "Content-Type":"application/json",
+            Accept:"application/json",
+            "Access-Control-Allow-Origin":"*",
+        },
+        body:JSON.stringify({
+            name,
+            emailid,
+            phoneno,
+            password,
+        })
+        }).then((res)=>res.json())
+        .then((data)=>{
+        console.log(data, "user Register");
+        localStorage.setItem("currentuser", data.username)
+        localStorage.setItem("currentemailid",emailid)
+        window.location.href="./book_ride.html"
+        })
+   }
+
+
+    render()
+    {
+        return(
+            <div>
+            <div>
+                <ul>
+                    <li><a href = "home_page.html">Home</a></li>
+                    <li><a href = "about_us.html">About Us</a></li>
+                    <li><a href = "feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <form onSubmit={this.handleSubmit}>
+            <h1 style = {{fontSize : "60px", textAlign : "center"}}>Sign Up</h1>
+            <div id = "login">
+                <div id = "style1">
+                    <label for="name" style = {{fontSize : "30px"}}>Name:</label>
+                    <input type = "text" id = "name" size = "5" onChange={(e)=>this.setState({name:e.target.value})} style = {{fontSize : "30px"}}/>
+                </div>
+                <br></br>
+                <div id = "style1">
+                    <label for="mail" style = {{fontSize : "30px"}}>Email:</label>
+                    <input type = "email" id = "mail" size = "5" onChange={(e)=>this.setState({emailid:e.target.value})} style = {{fontSize : "30px"}}/>
+                </div>
+                <br></br>
+                <div id = "style1">
+                    <label for="phone" style = {{fontSize : "30px"}}>Phone-No:</label>
+                    <input type = "tel" id = "phone" size = "5" onChange={(e)=>this.setState({phoneno:e.target.value})} style = {{fontSize : "30px"}}/>
+                </div>
+                <br></br>
+                <div id = "style1">
+                    <label for="pw" style = {{fontSize : "30px"}}>Password:</label>
+                    <input type = "password" id = "pw" size = "5" onChange={(e)=>this.setState({password:e.target.value})} style = {{fontSize : "30px"}}/>               
+                </div>
+                <br></br>
+                <div>
+                    <button type = 'submit' style = {{fontSize : "20px"}}>NEXT</button> 
+                </div>
+            </div>
+
+            </form>
+            </div>
+        )
+    
+    }
+}
+ReactDOM.render(<SignUp/>, document.getElementById("root"))
+</script>
+</body>
+</html>
